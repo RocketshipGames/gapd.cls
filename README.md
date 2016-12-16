@@ -6,18 +6,19 @@ definitions, but simplifies the actual content document template.
 
 ## Installation
 
-To install this class, clone the repository somewhere and then add the
-directory to your TEXINPUTS environment variable, e.g.:
+To install this class, clone the repository and then add its directory
+to your TEXINPUTS environment variable, e.g.:
 
     export TEXINPUTS=/home/joe/rocketshipgames/theory/latex/gapd:
 
 Note that the trailing colon is important, it directs TeX to include
 the current directory in the search path.
 
-A sample file is included in the repository to test that the document
-builds in your LaTeX install.  A number of packages are required, but
-all are standard in most LaTeX distributions.  It is not necessary to
-add the class to your TEXINPUTS to build this sample document.
+A sample document is included to test that the class works in your
+LaTeX install.  A number of packages are required, but all are
+standard in most LaTeX distributions so this should not be a problem.
+It is not necessary to add the class to your TEXINPUTS to build thi
+sample document.
 
 ## Updates
 
@@ -50,7 +51,7 @@ writer's perspective:
 Items that remain to be done include:
 
   * Adapt journal production scripts to compile multiple documents,
-    properly resetting metadata and setting page numbers for each.
+    notably setting correct page numbers for each citation footnote.
   
   * Potentially move the sample article and graphics to a subfolder or
     separate repo so the graphics aren't included in the TeX inputs
