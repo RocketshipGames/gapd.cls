@@ -4,9 +4,25 @@ This is a more proper LaTeX class file for the Game and Puzzle Design
 Journal.  It is derived from the original manually included command
 definitions, but simplifies the actual content document template.
 
-## Changes
+## Installation
 
-Among the improvements from the article writer's perspective:
+To install this class, clone the repository somewhere and then add the
+directory to your TEXINPUTS environment variable, e.g.:
+
+    export TEXINPUTS=/home/joe/rocketshipgames/theory/latex/gapd:
+
+Note that the trailing colon is important, it directs TeX to include
+the current directory in the search path.
+
+A sample file is included in the repository to test that the document
+builds in your LaTeX install.  A number of packages are required, but
+all are standard in most LaTeX distributions.  It is not necessary to
+add the class to your TEXINPUTS to build this sample document.
+
+## Updates
+
+Among the improvements to the original style code from the article
+writer's perspective:
 
  * Instead of manually providing the slightly different syntax for the
    main author listing, citation author list, and page header author
@@ -44,8 +60,6 @@ Items that remain to be done include:
 
 * Converted to LaTeX class by Joe Kopena, 2016/12/15
 * Original styling by Cameron Browne, 2014/09/11
-
-## License
 
 ## License
 
