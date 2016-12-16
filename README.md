@@ -9,7 +9,7 @@ definitions, but simplifies the actual content document template.
 To install this class, clone the repository and then add its directory
 to your TEXINPUTS environment variable, e.g.:
 
-    export TEXINPUTS=/home/joe/rocketshipgames/theory/latex/gapd:
+    export TEXINPUTS=/home/joe/latex/gapd.cls/:
 
 Note that the trailing colon is important, it directs TeX to include
 the current directory in the search path.
@@ -35,12 +35,13 @@ writer's perspective:
 
  * The two column format is done without using multicol, so that the
    latter doesn't have to be continually opened and closed for
-   figures, etc..  As a consequence, the latter should just be done
-   with the usual floats and the command macros have been removed.
-   This does mean LaTeX will place them in slightly different
-   locations that the original commands did, but it should mostly be
-   allowed to do so.  E.g., it's usually poor form to have a figure on
-   the first page, so LaTeX will not do that unless forced.
+   figures, manually closed at the end of the document etc..  As a
+   consequence, figures and tables should just be done with the usual
+   floats.  The original figure macros have been removed.  This does
+   mean LaTeX will place them in slightly different locations that the
+   original commands did, but it should mostly be allowed to do so.
+   E.g., it's usually poor form to have a figure on the first page, so
+   LaTeX will not do that unless forced.
 
  * The sample article has been corrected in some but not all ways to
    use proper TeX commands and hints for ranges versus em dashes,
@@ -51,7 +52,7 @@ writer's perspective:
 Items that remain to be done include:
 
   * Adapt journal production scripts to compile multiple documents,
-    notably setting correct page numbers for each citation footnote.
+    setting correct page numbers for each citation footnote.
   
   * Potentially move the sample article and graphics to a subfolder or
     separate repo so the graphics aren't included in the TeX inputs
