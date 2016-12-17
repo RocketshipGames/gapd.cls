@@ -159,7 +159,10 @@
 \fancyhead[RE]{{\small Vol.~\@Volume, No.~\@Number,~\@Year}}
 \fancyhead[CO]{{\small\@ShortTitle}}
 
-\fancyhead[LO]{{\small\@ShortFix{\@ShortAuthors}}}
+\newcommand{\ShortAuthors}[1]{\renewcommand{\@ShortAuthorList}{#1}}
+\newcommand{\@ShortAuthorList}{\@ShortFix{\@ShortAuthors}}
+
+\fancyhead[LO]{{\small\@ShortAuthorList}}
 
 \newcommand{\@ShortFix}[1]{%
 \StrCount{#1}{ and }[\@ands]
@@ -171,11 +174,14 @@
 \fi
 }
 
+\newcommand{\BibAuthors}[1]{\renewcommand{\@BibAuthorList}{#1}}
+\newcommand{\@BibAuthorList}{\@BibFix{\@BibAuthors}}
+
 \fancypagestyle{firststyle}
 {
 \fancyhead[L]{}
 \fancyhead[C]{{\small\textit{\@Type}}}
-\fancyfoot[L]{\footnotesize \@BibFix{\@BibAuthors}, `\@ShortTitle,' {\it Game \& Puzzle Design}, vol.~\@Volume, no.~\@Number, \@Year, pp.~\@Pages. $\copyright$ \@Year}
+\fancyfoot[L]{\footnotesize \@BibAuthorList, `\@ShortTitle,' {\it Game \& Puzzle Design}, vol.~\@Volume, no.~\@Number, \@Year, pp.~\@Pages. $\copyright$ \@Year}
 }
 \thispagestyle{firststyle}
 
