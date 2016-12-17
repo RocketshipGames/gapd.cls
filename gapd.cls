@@ -13,6 +13,7 @@
 \RequirePackage{lastpage}
 
 \RequirePackage{xstring}
+\RequirePackage{xparse}
 
 \RequirePackage{multicol, caption} % for double column
 \RequirePackage[english]{babel} % for random text
@@ -209,9 +210,41 @@
 %===============================================================================
 % Text Manipulations
 
+%\newcommand{\shortcut}[1]{%
+%  \@tempswafalse
+%  \@for\next:=#1\do
+%    {\if@tempswa+\else\@tempswatrue\fi\textbf{\next}}%
+%}
+
+
+\ExplSyntaxOn
+\NewDocumentCommand{ \@IterateSpaceList }{ mm }{
+    \seq_set_split:Nnn \l_tmpa_seq { ~ } { #2 }
+    \seq_map_inline:Nn \l_tmpa_seq {
+        #1{##1}
+    }
+}
+\ExplSyntaxOff
+
+\newcommand{\@FirstInitials}{}
+
+\newcommand{\@firstinitialpre}{}
+\newcommand{\@ExtractInitial}[1]{%
+\StrLeft{#1}{1}[\@initial]%
+\xappto{\@initials}{\@firstinitialpre \@initial.}%
+\renewcommand{\@firstinitialpre}{~}%
+}
+
+\newcommand{\@initials}{}
+
 \newcommand{\@AuthorBreak}[1]{%
-\StrLeft{#1}{1}[\@FirstInitial]%
-\StrBehind{#1}{ }[\@LastName]%
+\renewcommand{\@initials}{}%
+\@IterateSpaceList{\@ExtractInitial}{#1}%
+\StrCount{\@initials}{~}[\@spaces]%
+\StrBefore[\@spaces]{\@initials}{~}[\@FirstInitials]%
+%
+\StrCount{#1}{ }[\@spaces]%
+\StrBehind[\@spaces]{#1}{ }[\@LastName]%
 }
 
 %===============================================================================
@@ -231,14 +264,14 @@
 \newcommand{\@BibAnd}{}
 \newcommand{\@AddBibAuthor}[1]{
 \@AuthorBreak{#1}
-\xappto{\@BibAuthors}{\@BibAnd\@LastName, \@FirstInitial.}
+\xappto{\@BibAuthors}{\@BibAnd\@LastName,~\@FirstInitials}
 \renewcommand{\@BibAnd}{ and }
 }
 
 \newcommand{\@ShortAnd}{}
 \newcommand{\@AddShortAuthor}[1]{
 \@AuthorBreak{#1}
-\xappto{\@ShortAuthors}{\@BibAnd\@FirstInitial. \@LastName}
+\xappto{\@ShortAuthors}{\@BibAnd\@FirstInitials~\@LastName}
 \renewcommand{\@ShortAnd}{ and }
 }
 
