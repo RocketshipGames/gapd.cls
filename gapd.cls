@@ -1,4 +1,4 @@
-\NeedsTeXFormat{LaTeX2e}
+NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{gapd}[2016/12/15 Basic formatting for Game \& Puzzle Design Journal (gapd)]
 
 % Original styling by Cameron Browne, 2014/09/11
@@ -72,7 +72,7 @@
     {\bfseries\chaptername\ \thecontentslabel\quad}% <numbered-entry-format>
     {}% <numberless-entry-format>
     {\bfseries\hfill\contentspage}% <filler-page-format>
-  
+
 \DisableLigatures[a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z]{encoding = *, family = * }
 
 \urlstyle{rm} % print URLs in default Times New Roman font
@@ -135,13 +135,13 @@
 
 \newcommand{\Note}[2]
 {
-   \bigskip\noindent 
-   \colorbox{#1} 
+   \bigskip\noindent
+   \colorbox{#1}
    {\parbox
-      {.96\columnwidth} 
+      {.96\columnwidth}
       {\small #2}
    }
-   \vspace{2mm}  
+   \vspace{2mm}
 }
 
 %===============================================================================
@@ -308,7 +308,10 @@
 }
 
 \newcommand{\@Pages}{\thepage--\pageref*{LastPage}}
-\newcommand{\Pages}[2]{\renewcommand{\@Pages}{#1--#2}}
+\newcommand{\Pages}[2]{%
+\renewcommand{\@Pages}{#1--#2}%
+\setcounter{page}{#1}%
+}
 
 \AtBeginDocument{\fontsize{9pt}{12pt}\selectfont}
 
