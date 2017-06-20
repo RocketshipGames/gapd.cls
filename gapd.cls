@@ -1,4 +1,4 @@
-NeedsTeXFormat{LaTeX2e}
+\NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{gapd}[2016/12/15 Basic formatting for Game \& Puzzle Design Journal (gapd)]
 
 % Original styling by Cameron Browne, 2014/09/11
